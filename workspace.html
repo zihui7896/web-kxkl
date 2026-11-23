@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="styles/components/agreement-game.css?v=arcade-2">
   <link rel="stylesheet" href="styles/components/agreement-arcade.css?v=time-option-4">
   <link rel="stylesheet" href="styles/components/dodge-arena.css?v=1">
+  <link rel="stylesheet" href="styles/components/christmas.css">
 </head>
 <body>
   <div class="app-shell" id="app-shell">
@@ -32,6 +33,7 @@
       </div>
       <nav class="sidebar-nav" aria-label="主导航">
         <p class="nav-label">工作台</p>
+        <button class="nav-item christmas-nav" type="button" data-view="christmas"><span class="nav-mark" aria-hidden="true">✧</span><span class="nav-copy"><strong>圣诞来信</strong><small>一树星光，送给你</small></span></button>
         <button class="nav-item active" type="button" data-view="pet" aria-current="page"><span class="nav-mark" aria-hidden="true">01</span><span class="nav-copy"><strong>蓝豆桌宠</strong><small>动作与互动</small></span></button>
         <button class="nav-item" type="button" data-view="cat"><span class="nav-mark" aria-hidden="true">02</span><span class="nav-copy"><strong>橘团桌宠</strong><small>橘白长毛猫</small></span></button>
         <button class="nav-item" type="button" data-view="effects"><span class="nav-mark" aria-hidden="true">03</span><span class="nav-copy"><strong>代码特效</strong><small>实时生成动画</small></span></button>
@@ -47,6 +49,16 @@
 
     <main class="workspace">
       <button class="sidebar-reveal" id="sidebar-reveal" type="button" aria-label="显示侧边栏" hidden><span aria-hidden="true">☰</span><span>菜单</span></button>
+      <section class="view christmas-view" data-view-panel="christmas" hidden aria-labelledby="christmas-title">
+        <div class="christmas-scene">
+          <canvas class="christmas-canvas" aria-label="冰蓝粒子圣诞树，星光灯带环绕，雪花缓缓落下"></canvas>
+          <header class="christmas-top"><span>THE CHRISTMAS LETTER</span><span>DECEMBER <b>25</b> / FOR YOU</span></header>
+          <div class="christmas-copy"><span class="christmas-dedication">TO YOU, WITH LOVE</span><h1 id="christmas-title">把满树星光，<br>都送给你。</h1><p class="christmas-english">Merry Christmas<span> & a little magic.</span></p><div class="christmas-rule"></div><p class="christmas-message">亲爱的你，圣诞快乐。<br>愿你的冬天有暖意，眼里有星光，<br>每一个小小的心愿，都慢慢实现。</p><button class="christmas-letter-button" type="button" data-christmas-letter>拆开你的圣诞来信 <span aria-hidden="true">↗</span></button><span class="christmas-postscript">这一棵树，只为你亮起。</span></div>
+          <div class="christmas-tree-label" aria-hidden="true"><span>✧</span> A LITTLE WISH, A LITTLE WONDER</div>
+          <footer class="christmas-bottom"><div><span class="christmas-live-dot"></span><span data-christmas-status role="status">今夜的星光，偏爱你。</span></div><div class="christmas-controls"><button type="button" data-christmas-wish>✧ 点亮心愿</button><button type="button" data-christmas-pause aria-pressed="false">暂停动画</button></div></footer>
+          <dialog class="christmas-letter" aria-labelledby="christmas-letter-title"><form method="dialog"><button class="christmas-close" aria-label="关闭圣诞来信">×</button><span class="christmas-letter-star" aria-hidden="true">✧</span><small>A LETTER, JUST FOR YOU</small><h2 id="christmas-letter-title">亲爱的你：</h2><p>想把冬夜里最温柔的光，<br>和圣诞节所有的小美好，都留给你。</p><p>愿你有热乎乎的日常，<br>有不期而遇的惊喜，<br>有被认真惦记、被温柔接住的每一天。</p><p>不只圣诞节，<br>以后的每一天，也要开心呀。</p><span class="christmas-letter-sign">Merry Christmas, dear you ♡</span><button class="christmas-letter-accept">收下这份温柔 ♥</button></form></dialog>
+        </div>
+      </section>
       <section class="view active" id="view-pet" data-view-panel="pet" data-pet-playground="landou">
         <header class="page-header"><div><span class="eyebrow">ANIMATED DESKTOP BUDDY</span><h1>蓝豆 <em>LanDou</em></h1><p>一只会用钴蓝舌头表达心情的卡通蓝舌石龙子</p></div><span class="mode" id="mode-indicator" data-role="mode-indicator">手动动作模式</span></header>
         <section class="stage-card">
