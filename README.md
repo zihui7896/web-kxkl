@@ -8,7 +8,7 @@
 
 ## 网站里有什么
 
-从[欢迎首页](./index.html)进入工作台后，通过侧边栏切换八个栏目。
+从[欢迎首页](./index.html)进入工作台后，通过侧边栏切换九个栏目。
 
 | 栏目 | 体验内容 | 页面入口 |
 | --- | --- | --- |
@@ -20,6 +20,8 @@
 | 一笔一画 | 移动鼠标或滑动手指，让水彩插画逐步完成 | [进入一笔一画](./workspace.html#light) |
 | 同意用户协议 | 在不断变化的「同意」机关中闯关 | [进入协议挑战](./workspace.html#agreement) |
 | 极限闪避 | 躲避弹幕、收集能量，完成 60 秒生存挑战 | [进入极限闪避](./workspace.html#dodge) |
+
+| 枪战 | 运输船 3D 第一人称团队竞技，4 对 4 机器人对战 | [进入运输船](./workspace.html#gunfight) |
 
 ## 图片演示与玩法
 
@@ -138,3 +140,24 @@ web/
 ```
 
 技术实现以 HTML、CSS 和原生 JavaScript 为基础，结合 Canvas 与 Three.js 呈现动画、绘画、游戏和 3D 场景。
+
+
+### 枪战：运输船 3D 团队竞技
+
+从侧边栏「枪战」进入，或打开 `workspace.html#gunfight`。点击「进入战场」后锁定鼠标，Esc 暂停并释放鼠标。电脑键鼠体验最佳；触屏提供左侧摇杆、右侧划动转向及射击按钮。
+
+- 4 对 4 本地机器人团队对战：你与 3 名队友对抗 4 名敌人，5 分钟或任一队达到 40 击杀后结算，阵亡 3 秒复活。
+- WASD 移动、鼠标转向、左键射击、右键开镜、R 换弹、空格跳跃、C 按住蹲下、Shift 疾跑。1–4 / 滚轮切换 M4A1、AK-47、AWM、沙漠之鹰；Tab 查看战况。
+- 两端出生舱、中央交错货柜、侧翼有顶通道、双层集装箱与可攀跳木箱，配合海面、远港、动态阴影与金属纹理。模型与纹理由代码独立生成，是运输船主题的致敬改编，非官方地图资产或精确复刻。
+- 机器人使用可行走网格寻路，射线检测掩体遮挡；头部命中增伤、弹药与换弹、出生保护、击杀信息、小地图、可选音效、三档 AI 难度、两档画质及全屏。
+- 切换栏目、窗口失焦和浏览器后台都会暂停；离开栏目停止渲染。需要支持 WebGL 的浏览器，依赖沿用仓库内的 Three.js，不需外部网络资源、构建或游戏服务器。
+- 当前为单机机器人游戏，无多人联机、官方素材或真人动作捕捉；角色、枪械均为程序化模型。
+
+场景参考：[Transport Ship 地图结构说明](https://crossfirelegends.fandom.com/wiki/Transport_Ship)、[经典运输船地图资料](https://crossfirefps.fandom.com/wiki/Transport_Ship_%28UPGR%29)。
+
+
+画面细化参考了用户指定的[运输船浏览器演示](https://claude-opus-5-5-cf-transport-ship.pages.dev/)的视觉效果：增加程序化船壁、警示条、物理货柜筋条、斜放货柜、细波海面以及枪械圆角与反射。实现位于本站独立模块中，未嵌入远程游戏。
+
+![运输船作战准备界面](./assets/screenshots/gunfight/lobby.png)
+
+浏览器回归脚本：`scripts/tests/gunfight-browser.test.mjs`（需本机 Playwright，可通过 `PLAYWRIGHT_MODULE` 指定模块位置，`BROWSER_EXECUTABLE` 指定浏览器，`GUNFIGHT_URL` 指定已运行的页面）。覆盖开火、弹药、换弹、开镜、暂停、切换栏目、重开、画质和触屏。碰撞数学测试：`node --test scripts/tests/gunfight-collision.test.mjs`。

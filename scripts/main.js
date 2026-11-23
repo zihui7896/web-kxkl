@@ -6,6 +6,18 @@ initPetPlayground({rootSelector:'[data-pet-playground="cat"]',states:CAT_STATES,
 const effects=initEffectsGallery();
 const surprise=initSurprise();
 const lightStudio=initSketchStudio();
+let gunfight, gunfightLoading;
+function showGunfight(visible) {
+  if(gunfight){gunfight.setVisible(visible);return;}
+  if(!visible || gunfightLoading)return;
+  gunfightLoading=import('./features/gunfight.js?v=1').then(({initGunfight})=>{
+    gunfight=initGunfight();
+    gunfight.setVisible(currentView==='gunfight');
+  }).catch(error=>{
+    document.querySelector('[data-gun-loading]').textContent='3D 场景加载失败，请刷新重试，并确认浏览器支持 WebGL。';
+    console.error(error);
+  }).finally(()=>{gunfightLoading=null;});
+}
 let dodgeArena, dodgeLoading;
 function showDodge(visible) {
   if(dodgeArena){dodgeArena.setVisible(visible);return;}
@@ -50,4 +62,5 @@ initSidebar({onViewChange:name=>{
   showAgreement(name==='agreement');
   showThrill(name==='thrill');
   showDodge(name==='dodge');
+  showGunfight(name==='gunfight');
 }});

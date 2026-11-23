@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="styles/components/agreement-game.css?v=arcade-2">
   <link rel="stylesheet" href="styles/components/agreement-arcade.css?v=time-option-4">
   <link rel="stylesheet" href="styles/components/dodge-arena.css?v=1">
+  <link rel="stylesheet" href="styles/components/gunfight.css">
 </head>
 <body>
   <div class="app-shell" id="app-shell">
@@ -40,6 +41,7 @@
         <button class="nav-item" type="button" data-view="light"><span class="nav-mark" aria-hidden="true">06</span><span class="nav-copy"><strong>一笔一画</strong><small>滑动鼠标，慢慢成画</small></span></button>
         <button class="nav-item" type="button" data-view="agreement"><span class="nav-mark" aria-hidden="true">07</span><span class="nav-copy"><strong>同意用户协议</strong><small>三档难度 · 手速与耐心</small></span></button>
         <button class="nav-item" type="button" data-view="dodge"><span class="nav-mark" aria-hidden="true">08</span><span class="nav-copy"><strong>极限闪避</strong><small>60 秒弹幕 · 冲刺与擦弹</small></span></button>
+        <button class="nav-item" type="button" data-view="gunfight"><span class="nav-mark" aria-hidden="true">09</span><span class="nav-copy"><strong>枪战</strong><small>运输船 · 3D 团队竞技</small></span></button>
       </nav>
       <div class="sidebar-footer"><span class="status-dot" aria-hidden="true"></span><span class="sidebar-footer-copy"><strong>本地运行</strong><small>无需联网与构建</small></span></div>
     </aside>
@@ -216,3 +218,6 @@
   <script type="module" src="scripts/main.js?v=dodge-1"></script>
 </body>
 </html>
+      <section class="view gunfight-view" data-view-panel="gunfight" hidden>
+        <div data-gun-root><p data-gun-loading>正在装载运输船 · 准备 3D 战场…</p></div>
+      </section>
